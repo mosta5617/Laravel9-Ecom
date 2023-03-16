@@ -1,7 +1,47 @@
 @extends('admin.layouts.template')
 
-@section('content')allcategory |
+@section('page_title')
+    All Category
+@endsection
+
+@section('content')
     
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis tempora nostrum dolore quasi, dolorem minus odio quisquam dolor veritatis, quis, facilis accusamus. Non rem, repellendus accusamus at consequuntur autem quam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est facere quidem blanditiis distinctio quae tenetur sapiente magnam quasi rem porro? Necessitatibus blanditiis beatae, soluta veritatis dolorum sed praesentium illum autem? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi explicabo vel debitis sunt, ut fugiat animi excepturi, assumenda delectus alias eligendi reiciendis nostrum quasi tempora nihil veniam exercitationem perspiciatis cupiditate.
+<div class="container">
+
+  @if(session()->has('message'))
+  <div class="alert alert-success " role="alert">
+    {{ session()->get('message') }}
+  </div>
+  @endif
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Sub Category</th>
+            <th scope="col">Product</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($categories as $category )
+          <tr>
+            <th scope="row"> {{ $category->id }} </th>
+            <td>{{ $category->category_name }}</td>
+            <td>{{ $category->subcategory_count }}</td>
+            <td>{{ $category->product_count }}</td>
+            <td>{{ $category->slug }}</td>
+            <td>
+                <a href="{{ route('editcategory', $category->id ) }}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{ route('deletecategory', $category->id ) }}" class="btn btn-warning btn-sm">Delete</a>
+            </td>
+          </tr>
+                                
+          @endforeach
+        </tbody>
+      </table>
+</div>
 
 @endsection

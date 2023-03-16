@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title> @yield('page_title') </title> 
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -132,12 +132,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">@yield('page_title')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+            <ol class="breadcrumb float-sm-right font-italic">
+              <li class="breadcrumb-item"><a href="{{ route('admindashboard') }}">Home</a></li>
+              <li class="breadcrumb-item active">@yield('page_title')</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -190,8 +190,10 @@
 <script src="{{ asset('dashboard/') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dashboard/') }}/dist/js/adminlte.js"></script>
+
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dashboard/') }}/dist/js/demo.js"></script>
+{{--   <script src="{{ asset('dashboard/') }}/dist/js/demo.js"></script> --}}
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dashboard/') }}/dist/js/pages/dashboard.js"></script>
 </body>

@@ -23,16 +23,18 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($subcategories as $subcategory)      
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Electronics</td>
-            <td>100</td>
+            <th scope="row"> {{ $subcategory->id }} </th>
+            <td>{{ $subcategory->subcategory_name }}</td>
+            <td>{{ $subcategory->category_name }}</td>
+            <td>{{ $subcategory->	slug }}</td>
             <td>
                 <a href="" class="btn btn-primary btn-sm">Edit</a>
                 <a href="" class="btn btn-warning btn-sm">Delete</a>
             </td>
           </tr>
+          @endforeach     
         </tbody>
       </table>
 </div>

@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class SubCategoryController extends Controller
 {
     public function index(){
-        return view('admin.allsubcategory');
+        $categories=Category::latest()->get();
+        $subcategories=SubCategory::latest()->get();
+        return view('admin.allsubcategory', compact('categories','subcategories'));
     }
     public function AddSubCategory(){
         $categories=Category::latest()->get();

@@ -28,10 +28,10 @@
             <th scope="row"> {{ $subcategory->id }} </th>
             <td>{{ $subcategory->subcategory_name }}</td>
             <td>{{ $subcategory->category_name }}</td>
-            <td>{{ $subcategory->	slug }}</td>
+            <td><span class="badge badge-pill badge-primary">{{ $subcategory->product_count }}</span></td>
             <td>
-                <a href="" class="btn btn-primary btn-sm">Edit</a>
-                <a href="" class="btn btn-warning btn-sm">Delete</a>
+              <a href="{{ route('editsubcategory', $subcategory->id ) }}" class="btn btn-primary btn-sm">Edit</a>
+              <a href="{{ route('deletesubcategory', $subcategory->id ) }}" class="btn btn-warning btn-sm">Delete</a>
             </td>
           </tr>
           @endforeach     

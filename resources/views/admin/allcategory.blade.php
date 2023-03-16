@@ -30,8 +30,8 @@
           <tr>
             <th scope="row"> {{ $category->id }} </th>
             <td>{{ $category->category_name }}</td>
-            <td>{{ $category->subcategory_count }}</td>
-            <td>{{ $category->product_count }}</td>
+            <td><span class="badge badge-pill badge-primary">{{ $category->subcategory_count }}</span></td>
+            <td><span class="badge badge-pill badge-primary">{{ $category->product_count }}</span></td>
             <td>{{ $category->slug }}</td>
             <td>
                 <a href="{{ route('editcategory', $category->id ) }}" class="btn btn-primary btn-sm">Edit</a>

@@ -23,9 +23,9 @@
           @foreach ($products as $product )
           <tr>
             <th scope="row"> {{ $product->id }} </th>
-            <td>{{ $product->product_name }}</td>
+            <td>{{ $product->product_name }}</td> 
             <td> <img src="{{ asset($product->product_image) }}" alt="" style="width: 100px" class="img-thumbnail"> </td>
-            <td><a href="" class="badge badge-pill badge-secondary">Edit</a></td>
+            <td><a href="{{ route('editimage', $product->id) }}" class="badge badge-pill badge-secondary" id="" >Edit</a></td>
             <td><span class="badge badge-pill badge-primary">{{ $product->product_price }}</span></td>
             <td><span class="badge badge-pill badge-primary">{{ $product->product_quantity }}</span></td>
             <td>

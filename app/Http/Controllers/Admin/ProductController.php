@@ -33,10 +33,9 @@ class ProductController extends Controller
         ]);
 
         $image=$request->file('product_image');
-        $image_name=hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
+        $image_name=time().'.'. $image->getClientOriginalExtension();
         $request->product_image->move(public_path('upload'),$image_name);
         $image_url= 'upload/'. $image_name;
-
         $category_id=$request->product_category_id;
         $subcategory_id=$request->product_subcategory_id;
 
@@ -61,6 +60,34 @@ class ProductController extends Controller
        SubCategory::where('id',  $subcategory_id)->increment('product_count', 1);
 
         return redirect()->route('allproduct')->with('message', 'Product Added Successfully!'); 
+    }
+
+
+    public function EditImage($id){
+        $image_info=Product::findOrFail($id);
+        return view('admin.editimage', compact('image_info'));
+
+    }
+
+
+    public function UpdateImage(Request $request){
+        $image_id=$request->image_id;
+        $product_image_name= Product::where('id', $image_id )->value('product_image');
+
+        $request->validate([
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        Product::findOrFail($image_id)->update([
+            'product_image'=>$request->product_image,
+            
+        ]);
+        $image=$request->file('product_image');
+        $image_name=time().'.'. $image->getClientOriginalExtension();
+        $request->product_image->move(public_path('upload'),$image_name);
+        $image_url= 'upload/'. $image_name;
+
+        return redirect()->route('allproduct')->with('message', 'Product Image Updated Successfully!'); 
     }
 
 

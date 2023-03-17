@@ -65,6 +65,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/admin/add-product', 'AddProduct')->name('addproduct');
         Route::post('/admin/store-product', 'StoreProduct')->name('storeproduct');
 
+        Route::get('/admin/edit-image/{id}', 'EditImage')->name('editimage');
+        Route::get('/admin/update-image/{id}', 'UpdateImage')->name('updateimage');
+
         Route::get('/admin/edit-product/{id}', 'EditProduct')->name('editproduct');
         Route::post('/admin/update-product', 'UpdateProduct')->name('updateproduct');
         Route::get('/admin/delete-product/{id}', 'DeleteProduct')->name('deleteproduct');

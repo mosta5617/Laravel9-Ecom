@@ -118,4 +118,13 @@ class ProductController extends Controller
         return redirect()->route('allproduct')->with('message', 'Product Updated Successfully!'); 
     }
 
+    public function DeleteProduct($id){
+        $cat_id=Product::where('id', $id)->value('product_category_id');
+        $subcat_id=Product::where('id', $id)->value('product_subcategory_id');
+        Product::findOrFail($id)->delete();
+        Category::where('id',  $cat_id )->decrement('product_count', 1);
+        SubCategory::where('id',  $subcat_id )->decrement('product_count', 1);
+        return redirect()->route('allproduct')->with('message', 'Product Deleted Successfully!'); 
+    }
+
 }

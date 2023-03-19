@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/admin/dashboard', 'index')->name('admindashboard');
         
@@ -70,7 +70,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
         Route::get('/admin/edit-product/{id}', 'EditProduct')->name('editproduct');
         Route::post('/admin/update-product', 'UpdateProduct')->name('updateproduct');
-        Route::get('/admin/delete-product/{id}', 'DeleteProduct')->name('deleteproduct');
+        Route::get('/admin/delete-product/{id}', 'DeleteProduct')->name('deleteproduct'); 
     });
     Route::controller(OrderController::class)->group(function () {
         Route::get('/admin/all-order', 'index')->name('pendingorders');

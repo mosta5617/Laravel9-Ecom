@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $products=Product::latest()->get();      
-        return view('user_template.layouts.template', compact('products'));
+        $products=Product::latest()->get();
+
+        return view('user_template.home', compact('products')); 
+
     }
 }

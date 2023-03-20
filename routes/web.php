@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +22,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
+    Route::get('/', 'index')->name('home'); 
     
 });
 
-
-
-Route::get('/home', function () {
-    return view('welcome');
+Route::controller(ClientController::class)->group(function () {
+    Route::get('/category', 'CategoryPage')->name('category'); 
+    Route::get('/single-product', 'SingleProduct')->name('singleproduct');  
+    Route::get('/add-to-cart', 'AddToCart')->name('addtocart'); 
+    Route::get('/checkout', 'Checkout')->name('checkout'); 
+    Route::get('/user-profile', 'UserProfile')->name('userprofile'); 
+    Route::get('/new-release', 'NewRelease')->name('newrelease'); 
+    Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal'); 
+    Route::get('/cusoter-service', 'CustomerService')->name('customerservice'); 
+    
 });
 
 Route::get('/dashboard', function () {

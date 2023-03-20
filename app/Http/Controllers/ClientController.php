@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
     public function CategoryPage(){
-        $products=Product::latest()->get();
-        return view('user_template.layouts.category', compact('products')); 
+        $products=Product::latest()->get();        
+        $categories=Category::latest()->get();
+        $subcategories=SubCategory::latest()->get();
+        return view('user_template.layouts.category', compact('products','categories','subcategories')); 
+
 
     }
     public function SingleProduct(){
@@ -17,7 +22,10 @@ class ClientController extends Controller
 
     }
     public function AddToCart(){
-        return view('user_template.addtocart'); 
+        $products=Product::latest()->get();
+        $categories=Category::latest()->get();
+        $subcategories=SubCategory::latest()->get();
+        return view('user_template.addtocart', compact('products','categories','subcategories')); 
 
     }
     public function Checkout(){

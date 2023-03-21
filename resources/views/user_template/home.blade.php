@@ -21,8 +21,8 @@
                             <p class="price_text">Price  <span style="color: #262626;">$ {{ $product->product_price }}</span></p>
                             <div class="tshirt_img"><img src="{{ asset($product->product_image) }}"></div>
                             <div class="btn_main">
-                               <div class="buy_bt"><a href="{{ route('editproduct', $product->id ) }}">Buy Now</a></div>
-                               <div class="seemore_bt"><a href="{{ route('editproduct', $product->id ) }}">See More</a></div>
+                               <div class="buy_bt"><a href="{{ route('productdetails', [$product->id, $product->slug] ) }}">Buy Now</a></div>
+                               <div class="seemore_bt"><a href="{{ route('productdetails', [$product->id, $product->slug] ) }}">See More</a></div>
                             </div>
                          </div>
                       </div>

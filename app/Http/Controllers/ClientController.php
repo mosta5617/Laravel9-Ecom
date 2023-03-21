@@ -16,8 +16,9 @@ class ClientController extends Controller
 
 
     }
-    public function SingleProduct(){
-        return view('user_template.singleproduct'); 
+    public function ProductDetails($id){
+        $products=Product::findOrFail($id);
+        return view('user_template.productdetails', compact('products')); 
 
     }
     public function AddToCart(){

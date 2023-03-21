@@ -34,7 +34,7 @@ Route::controller(ClientController::class)->group(function () {
     Route::get('/user-profile', 'UserProfile')->name('userprofile'); 
     Route::get('/new-release', 'NewRelease')->name('newrelease'); 
     Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal'); 
-    Route::get('/cusoter-service', 'CustomerService')->name('customerservice');  
+    Route::get('/customer-service', 'CustomerService')->name('customerservice');  
     
 });
 

@@ -45,7 +45,9 @@ class ClientController extends Controller
 
     }
     public function CustomerService(){
-        return view('user_template.customerservice'); 
+        $categories=Category::latest()->get();
+
+        return view('user_template.customerservice', compact('categories')); 
 
     }
 }

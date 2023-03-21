@@ -37,7 +37,7 @@
       <link rel="stylesoeet" href="{{ asset('home/') }}/css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
    </head>
-   <body>
+   <body class="">
       <!-- banner bg main start -->
       <div class="banner_bg_main">
          <!-- header top section start -->
@@ -47,12 +47,14 @@
                   <div class="col-sm-12">
                      <div class="custom_menu">
                         <ul>
+                           <li class="fa-light fa-house"><a href="{{ route('home') }}">Home</a></li>
                            <li><a href="{{ route('allcategory') }}">All Category</a></li>
                            <li><a href="{{ route('addtocart') }}">Add to Cart</a></li>
                            <li><a href="{{ route('checkout') }}">Checkout</a></li>
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                            <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
+                           <li><a href="{{ route('userprofile') }}">My Account</a></li>
                         </ul>
                      </div>
                   </div>
@@ -79,10 +81,22 @@
       </div>
       <!-- banner bg main end -->
       <!-- fashion section start -->
+      
  <div class="container py-5">
+   @php
+   $categories=App\Models\Category::latest()->get();
+   @endphp
+
+   <div class="py-5 font-weight-bold" style="text-align:center ">
+      All Category:
+      @foreach ($categories as $category)
+      <a href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }} <span class="badge badge-info">{{ $category->product_count }} </span> | </a> 
+      @endforeach  
+   </div>  
+
    @yield('main-content')
 
-   Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptate nostrum numquam maxime dignissimos assumenda deleniti aut, praesentium nemo omnis inventore quae labore perferendis sunt, qui nam facilis dolore quidem.
+   
  </div>
       <!-- fashion section end -->
       <!-- electronic section start -->

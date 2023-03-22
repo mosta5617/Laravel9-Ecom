@@ -1,7 +1,7 @@
 @extends('user_template.layouts.user_profile_template')
 @section('page_title')
-    Flayer | User Profile
+    Flayer | History
 @endsection
 @section('user-content')
- Welcome {{ Auth::user()->name }}
+history
 @endsection

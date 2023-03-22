@@ -13,7 +13,7 @@
                @foreach ( $products as $product)
                   <div class="col-lg-4 col-sm-4">
                      <div class="box_main">
-                        <h4 class="shirt_text">{{ $product->product_name }}</h4>
+                        <h4 class="shirt_text"><a href="{{ route('productdetails', [$product->id, $product->slug] ) }}"> {{ $product->product_name }}</a></h4>
                         <p class="price_text">Price  <span style="color: #262626;">$ {{ $product->product_price }}</span></p>
                         <div class="tshirt_img"><img src="{{ asset($product->product_image) }}"></div>
                         <div class="btn_main">

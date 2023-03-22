@@ -18,7 +18,9 @@ class ClientController extends Controller
     }
     public function ProductDetails($id){
         $products=Product::findOrFail($id);
-        return view('user_template.productdetails', compact('products')); 
+        $subcat_id=Product::where('product_category_id', $id)->value('product_subcategory_id');
+        $related_products=Product::where('product_subcategory_id', $subcat_id)->latest()->get();
+        return view('user_template.productdetails', compact('products', 'related_products')); 
 
     }
     public function AddToCart(){
@@ -30,6 +32,14 @@ class ClientController extends Controller
     }
     public function Checkout(){
         return view('user_template.checkout'); 
+
+    }
+    public function PendingOders(){
+        return view('user_template.pendingoders'); 
+
+    }
+    public function History(){
+        return view('user_template.history'); 
 
     }
     public function UserProfile(){

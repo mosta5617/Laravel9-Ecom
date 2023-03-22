@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -23,13 +25,31 @@ class ClientController extends Controller
         return view('user_template.productdetails', compact('products', 'related_products')); 
 
     }
+
     public function AddToCart(){
-        $products=Product::latest()->get();
-        $categories=Category::latest()->get();
-        $subcategories=SubCategory::latest()->get();
-        return view('user_template.addtocart', compact('products','categories','subcategories')); 
+        $userid=Auth::id();
+        $cart_items=Cart::where('user_id', $userid)->get();
+        return view('user_template.addtocart', compact('cart_items')); 
 
     }
+
+    public function AddProductToCart(Request $request){
+        $product_price=$request->price;
+        $quantity=$request->quantity;
+        $price=$product_price*$quantity;
+        Cart::insert([
+            'product_id'=>$request->product_id,
+            'user_id'=>Auth::id(),
+            'quantity'=>$request->quantity,
+            'price'=>$price,
+
+        ]);
+
+        return redirect()->route('addtocart')->with('message', 'Your item Added to Cart Successfully!'); 
+    }
+   
+
+
     public function Checkout(){
         return view('user_template.checkout'); 
 

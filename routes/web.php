@@ -45,6 +45,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/user-profile/history', 'History')->name('history'); 
         Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal'); 
         Route::get('/customer-service', 'CustomerService')->name('customerservice'); 
+        Route::get('/remove-item/{id}', 'RemoveItem')->name('removeitem');
+
        
     });    
 });

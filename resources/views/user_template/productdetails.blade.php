@@ -18,10 +18,9 @@
                            @csrf
                            <input type="hidden" value="{{ $products->id }}" name="product_id">
                            <input type="hidden" value="{{ $products->product_price }}" name="price">
-                           <input type="hidden" value="1" name="quantity">
                            <div class="form-group">
-                              <label for="product_quantity">How Many Pics?</label>
-                              <input type="number" class="form-control" min='1' placeholder="1" name="product_quantity">
+                              <label for="quantity">How Many Pics?</label>
+                              <input type="number" class="form-control" min='1' placeholder="1" name="quantity" value="1">
                            </div>
                            <br>
                            <input type="submit" class="btn btn-warning" value="Add to Cart">

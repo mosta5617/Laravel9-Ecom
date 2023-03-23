@@ -24,22 +24,41 @@
     </tr>
   </thead>
   <tbody>
+    @php
+    $total=0;
+@endphp
     @foreach ( $cart_items as $item )
     <tr>
       @php
          $product_name=App\Models\Product::where('id', $item->product_id)->value('product_name'); 
          $img=App\Models\Product::where('id', $item->product_id)->value('product_image'); 
+         
       @endphp
       <td>{{ $product_name }}</td>
       <td><img src="{{ asset($img) }}" alt="" style="height: 50px"></td>
       <td><span class="badge badge-pill badge-primary">{{ $item->quantity }}</span></td>
       <td><span class="badge badge-pill badge-primary">{{ $item->price }}</span></td>
       <td>
-          <a href="" class="btn btn-warning btn-sm">Remove</a>
+          <a href="{{ route('removeitem', $item->id) }}" class="btn btn-warning btn-sm">Remove</a>
       </td>
     </tr>
-                          
+    @php
+        $total=$total+$item->price;
+    @endphp
+                 
     @endforeach
+    <tr>
+
+
+@if ($total<=0)
+<td></td><td></td><td>Your Cart is Empty!</td>
+@else
+<td></td><td></td>
+<td>Total</td>
+<td>{{ $total }}</td>
+<td><a href="" class="btn btn-primary btn-sm">Checkout Now</a></td>
+@endif
+    </tr>  
   </tbody>
 </table>
 

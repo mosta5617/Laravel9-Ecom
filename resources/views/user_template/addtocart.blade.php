@@ -13,9 +13,35 @@
 </div>
 @endif
 
-@foreach ( $cart_items as $item )
-    {{ $item->price }}
-@endforeach
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Image</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ( $cart_items as $item )
+    <tr>
+      @php
+         $product_name=App\Models\Product::where('id', $item->product_id)->value('product_name'); 
+         $img=App\Models\Product::where('id', $item->product_id)->value('product_image'); 
+      @endphp
+      <td>{{ $product_name }}</td>
+      <td><img src="{{ asset($img) }}" alt="" style="height: 50px"></td>
+      <td><span class="badge badge-pill badge-primary">{{ $item->quantity }}</span></td>
+      <td><span class="badge badge-pill badge-primary">{{ $item->price }}</span></td>
+      <td>
+          <a href="" class="btn btn-warning btn-sm">Remove</a>
+      </td>
+    </tr>
+                          
+    @endforeach
+  </tbody>
+</table>
 
 
 @endsection

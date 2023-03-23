@@ -15,7 +15,15 @@
                     <li><a href="{{ route('userprofile') }}">Dashboard</a></li>
                     <li><a href="{{ route('pendingoders') }}">Pending Oders</a></li>
                     <li><a href="{{ route('history') }}">History</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                
+                            <button type="submit" class="">
+                                {{ __('Log Out') }}
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('main-content')
-<h2>Add to Cart Page</h2>
+<h2>Add to Cart Page</h2>my wife beside me cutting vegetable an me working on computer in a room
 
 @if(session()->has('message'))
 <div class="alert alert-success " role="alert">
@@ -56,7 +56,7 @@
 <td></td><td></td>
 <td>Total</td>
 <td>{{ $total }}</td>
-<td><a href="" class="btn btn-primary btn-sm">Checkout Now</a></td>
+<td><a href="{{ route('shippingaddress') }}" class="btn btn-primary btn-sm">Checkout Now</a></td>
 @endif
     </tr>  
   </tbody>

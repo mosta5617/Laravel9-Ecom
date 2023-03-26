@@ -62,9 +62,20 @@
               @endif
                   </tr>  
                 </tbody>
-              </table>
+
+          </table>
+ 
         </div>
     </div>
+    <form action="" method="POST">
+      @csrf
+      <input type="submit" value="Cancel Order" class="btn btn-danger mr-3">
+    </form>
+
+    <form action="{{ route('placeorder') }}" method="POST">
+      @csrf
+      <input type="submit" value="Place Order" class="btn btn-primary">
+    </form>
 </div>
 
 @endsection

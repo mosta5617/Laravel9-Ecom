@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShippingInfo;
 use App\Models\SubCategory;
@@ -66,6 +67,31 @@ class ClientController extends Controller
         return view('user_template.shippingaddress'); 
 
     }
+    public function PlaceOrder(){
+        $userid= Auth::id();
+    
+        $shipping_address= ShippingInfo::where('user_id', $userid)->first();
+        $cart_items= Cart::where('user_id', $userid)->get();
+        foreach($cart_items as $item){
+            Order::insert([
+                'user_id'=>Auth()->id(),
+                'phonenumber'=>$shipping_address->phonenumber,
+                'address'=>$shipping_address->address,
+                'postalcode'=>$shipping_address->postalcode,
+                'product_id'=>$item->product_id,
+                'total_price'=>$item->price,
+                'product_quantity'=>$item->quantity,
+
+            ]);
+            $id=$item->id;
+            Cart::findOrFail($id)->delete();
+          
+        }
+        ShippingInfo::where('user_id', $userid)->first()->delete();
+        return redirect()->route('pendingoders')->with('message', 'Your orders has been placed Successfully!'); ; 
+    }
+
+
     public function AddShippingAddress(Request $request){
         $request->validate([
             'address' => 'required|unique:shipping_infos|max:255',

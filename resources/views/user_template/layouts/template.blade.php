@@ -50,7 +50,6 @@
                            <li class="fa-light fa-house"><a href="{{ route('home') }}">Home</a></li>
                            <li><a href="{{ route('allcategory') }}">All Category</a></li>
                            <li><a href="{{ route('addtocart') }}">Cart</a></li>
-                           <li><a href="{{ route('checkout') }}">Checkout</a></li>
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                            <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>

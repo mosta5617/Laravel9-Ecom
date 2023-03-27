@@ -38,7 +38,7 @@
                   <div class="paginate d-flex justify-content-center my-5">
                      @if ($products->hasPages())
                      <div class="pagination-wrapper" >
-                        {{ $products->onEachSide(2)->links() }}
+                        {{ $products->onEachSide(5)->links() }}
                      </div>
                       @endif  
                   </div> 

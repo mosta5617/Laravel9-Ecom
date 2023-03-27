@@ -33,16 +33,22 @@
                             </div>
                          </div>
                       </div>
-                      @endforeach
+                      @endforeach                     
                    </div>
-                </div>
+                  <div class="paginate d-flex justify-content-center my-5">
+                     @if ($products->hasPages())
+                     <div class="pagination-wrapper" >
+                        {{ $products->onEachSide(2)->links() }}
+                     </div>
+                      @endif  
+                  </div> 
+
+                </div>     
              </div>
           </div>
-
        </div>
-
     </div>
  </div>
- 
+
 
 @endsection

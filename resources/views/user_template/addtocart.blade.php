@@ -5,7 +5,7 @@
 @endsection
 
 @section('main-content')
-<h2>Add to Cart Page</h2>my wife beside me cutting vegetable an me working on computer in a room
+<h2>Add to Cart Page</h2>
 
 @if(session()->has('message'))
 <div class="alert alert-success " role="alert">

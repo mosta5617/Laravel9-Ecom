@@ -53,7 +53,13 @@
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                            <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
+
+                           @if (Auth::guest())
                            <li><a href="{{ route('userprofile') }}">My Account</a></li>
+                           @else
+                           <li><a href="{{ route('userprofile') }}">({{ Auth::user()->name }})</a></li>
+                           @endif
+                            
                         </ul>
                      </div>
                   </div>

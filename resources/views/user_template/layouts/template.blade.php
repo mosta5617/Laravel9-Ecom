@@ -36,6 +36,10 @@
       <link rel="stylesheet" href="{{ asset('home/') }}/css/owl.carousel.min.css">
       <link rel="stylesoeet" href="{{ asset('home/') }}/css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.css" integrity="sha512-ZCCAQejiYJEz2I2a9uYA3OrEMr8ZN4BGTwlVYNxsYopLS/WH2bey53SObOKRF4ciHo5gqxgVP/muDloHvWZXHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
    </head>
    <body class="">
       <!-- banner bg main start -->
@@ -138,5 +142,60 @@
            document.getElementById("mySidenav").style.width = "0";
          }
       </script>
+{{-- Tostr CDN script --}}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script>
+         @if (Session::has('message'))
+         var type="{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+               case 'info':
+                  toastr.info("{{ Session::get('message') }}");
+                  break;
+                  case 'success':
+                  toastr.success("{{ Session::get('message') }}");
+                  break;
+                  case 'warning':
+                  toastr.warning("{{ Session::get('message') }}");
+                  break;
+                  case 'error':
+                  toastr.error();("{{ Session::get('message') }}");
+                  break;
+            }
+         @endif
+      </script>
+{{-- Sweet Alert script --}}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.js" integrity="sha512-ySDkgzoUz5V9hQAlAg0uMRJXZPfZjE8QiW0fFMW7Jm15pBfNn3kbGsOis5lPxswtpxyY3wF5hFKHi+R/XitalA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if(session::has('message'))
+<script>
+   swal("Congratulations!", "{!!session::get('message')!!}", "success", {
+      button: 'OK',
+   });
+</script>
+   
+@endif
+
+<script>
+   $('.remove').click(function(event){
+      var form = $(this).closest("form");
+      event.preventDefault();
+  swal.fire({
+    title: 'Confirm',
+    text: 'Are you sure to delete this message?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, sir',
+    cancelButtonText: 'Not at all',
+    reverseButtons: true
+  }).then(result)=>{
+   if (result.isConfirmed){
+      form.submit()
+   }
+  }
+});
+</script>
    </body>
 </html>

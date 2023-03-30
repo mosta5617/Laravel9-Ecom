@@ -39,7 +39,7 @@
       <td><span class="badge badge-pill badge-primary">{{ $item->quantity }}</span></td>
       <td><span class="badge badge-pill badge-primary">{{ $item->price }}</span></td>
       <td>
-          <a href="{{ route('removeitem', $item->id) }}" class="btn btn-warning btn-sm">Remove</a>
+          <a href="{{ route('removeitem', $item->id) }}" class="btn btn-warning btn-sm remove " id="remove">Remove</a>
       </td>
     </tr>
     @php

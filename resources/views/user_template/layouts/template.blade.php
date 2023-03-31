@@ -180,7 +180,7 @@
 
 <script>
    $('.remove').click(function(event){
-      var form = $(this).closest("form");
+      var form = $(this).closest('href');
       event.preventDefault();
   swal.fire({
     title: 'Confirm',

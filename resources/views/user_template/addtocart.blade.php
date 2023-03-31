@@ -16,6 +16,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th scope="col">SL#</th>
       <th scope="col">Product Name</th>
       <th scope="col">Product Image</th>
       <th scope="col">Quantity</th>
@@ -26,14 +27,16 @@
   <tbody>
     @php
     $total=0;
+    $i=0;
+    $quantity=0;
 @endphp
     @foreach ( $cart_items as $item )
     <tr>
       @php
          $product_name=App\Models\Product::where('id', $item->product_id)->value('product_name'); 
-         $img=App\Models\Product::where('id', $item->product_id)->value('product_image'); 
-         
+         $img=App\Models\Product::where('id', $item->product_id)->value('product_image');  
       @endphp
+      <td>{{  $i=$i+1; }} </td>
       <td>{{ $product_name }}</td>
       <td><img src="{{ asset($img) }}" alt="" style="height: 50px"></td>
       <td><span class="badge badge-pill badge-primary">{{ $item->quantity }}</span></td>
@@ -44,6 +47,7 @@
     </tr>
     @php
         $total=$total+$item->price;
+        $quantity=$quantity+$item->quantity;
     @endphp
                  
     @endforeach
@@ -55,7 +59,8 @@
 @else
 <td></td><td></td>
 <td>Total</td>
-<td>{{ $total }}</td>
+<td><span class="badge badge-pill badge-primary">{{ $quantity }}</span></td>
+<td><span class="badge badge-pill badge-primary">{{ $total }}</span></td>
 <td><a href="{{ route('shippingaddress') }}" class="btn btn-primary btn-sm">Checkout Now</a></td>
 @endif
     </tr>  

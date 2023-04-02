@@ -31,6 +31,7 @@
       <!-- font awesome -->
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <!--  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <!-- owl stylesheets -->
       <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
       <link rel="stylesheet" href="{{ asset('home/') }}/css/owl.carousel.min.css">
@@ -97,7 +98,7 @@
    @endphp
 
    <div class="py-5 font-weight-bold" style="text-align:center ">
-      All Category:
+      All Category: 
       @foreach ($categories as $category)
       <a href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }} <span class="badge badge-info">{{ $category->product_count }} </span> | </a> 
       @endforeach  

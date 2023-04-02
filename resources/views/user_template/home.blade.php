@@ -11,7 +11,7 @@
        <div class="carousel-inner">
           <div class="carousel-item active">
              <div class="container">
-                <h1 class="fashion_taital">Man & Woman Fashion</h1>
+                <h1 class="fashion_taital">Man & Woman Fashion </h1>
                 <div class="fashion_section_2">
                    <div class="row">
                     @foreach ( $products as $product)
@@ -29,7 +29,7 @@
                                  <br>
                                  <input type="submit" class="btn btn-warning" value="Buy Now">
                               </form>
-                               <div class="seemore_bt"><a href="{{ route('productdetails', [$product->id, $product->slug] ) }}">See More</a></div>
+                               <div class="seemore_bt"><a href="{{ route('productdetails', [$product->id, $product->slug] ) }}">See More </a></div>
                             </div>
                          </div>
                       </div>

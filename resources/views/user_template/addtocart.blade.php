@@ -13,7 +13,7 @@
 </div>
 @endif
 
-<table class="table table-hover">
+<table class="table table-hover" id="myTable">
   <thead>
     <tr>
       <th scope="col">SL#</th>
@@ -53,7 +53,6 @@
     @endforeach
     <tr>
 
-
 @if ($total<=0)
 <td></td><td></td><td>Your Cart is Empty!</td>
 @else
@@ -64,8 +63,8 @@
 <td><a href="{{ route('shippingaddress') }}" class="btn btn-primary btn-sm">Checkout Now</a></td>
 @endif
     </tr>  
-  </tbody>
-</table>
+</tbody>
+  </table>
 
 
 @endsection

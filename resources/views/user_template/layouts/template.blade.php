@@ -41,6 +41,13 @@
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.css" integrity="sha512-ZCCAQejiYJEz2I2a9uYA3OrEMr8ZN4BGTwlVYNxsYopLS/WH2bey53SObOKRF4ciHo5gqxgVP/muDloHvWZXHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <!-- Data Table CSS -->
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+ 
+
+
    </head>
    <body class="">
       <!-- banner bg main start -->
@@ -52,7 +59,7 @@
                   <div class="col-sm-12">
                      <div class="custom_menu">
                         <ul>
-                           <li class="fa-light fa-house"><a href="{{ route('home') }}">Home</a></li>
+                           <li><a href="{{ route('home') }}" class="fa fa-home" aria-hidden="true"></a></li>
                            <li><a href="{{ route('allcategory') }}">All Category</a></li>
                            <li><a href="{{ route('addtocart') }}">Cart</a></li>
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
@@ -60,7 +67,7 @@
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
 
                            @if (Auth::guest())
-                           <li><a href="{{ route('userprofile') }}">My Account</a></li>
+                           <li><a href="{{ route('userprofile') }}" class="fa fa-sign-in" aria-hidden="true"></a></li>
                            @else
                            <li><a href="{{ route('userprofile') }}">({{ Auth::user()->name }})</a></li>
                            @endif
@@ -134,6 +141,18 @@
       <!-- sidebar -->
       <script src="{{ asset('home/') }}/js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="{{ asset('home/') }}/js/custom.js"></script>
+      
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+
+         <script>	
+         let table = new DataTable('#myTable');
+         table.row(':first')
+        .data();
+         </script>
       <script>
          function openNav() {
            document.getElementById("mySidenav").style.width = "250px";

@@ -118,6 +118,14 @@
          <li class="nav-item">
          <a href="" class="nav-link disabled">Cancel Oders</a>
         </li>
+        <li>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-danger">
+                {{ __('Log Out') }}
+            </button>
+         </form>
+        </li>
         
       </ul>
       <!-- /.sidebar-menu -->

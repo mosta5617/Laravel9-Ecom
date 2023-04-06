@@ -65,6 +65,7 @@
                            <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                            <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                            <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
+                           <li><a href="{{ route('adminlogin') }}">Admin Login</a></li>
 
                            @if (Auth::guest())
                            <li><a href="{{ route('userprofile') }}" class="fa fa-sign-in" aria-hidden="true"></a></li>

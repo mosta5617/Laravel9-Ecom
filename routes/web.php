@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -116,3 +117,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+
+
+Route::middleware(['auth'])->group(function () {
+   
+    Route::controller(AuthenticatedSessionController ::class)->group(function () {
+        Route::get('/adminlogin', 'AdminLogin')->name('adminlogin');
+        
+    }); 
+
+});

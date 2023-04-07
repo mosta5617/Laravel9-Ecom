@@ -59,7 +59,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'role:user'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
    
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/admin/dashboard', 'index')->name('admindashboard');
@@ -120,11 +120,11 @@ require __DIR__.'/auth.php';
 
 
 
-Route::middleware(['auth'])->group(function () {
+
    
     Route::controller(AuthenticatedSessionController ::class)->group(function () {
-        Route::get('/adminlogin', 'AdminLogin')->name('adminlogin');
-        
+        Route::get('/admin-login', 'AdminLogin')->name('getadminlogin');
+        Route::post('/admin-login', 'store')->name('postadminlogin');
+           
     }); 
 
-});

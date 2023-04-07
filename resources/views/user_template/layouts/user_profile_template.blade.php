@@ -6,7 +6,7 @@
 
 @section('main-content')
 
-<h2> Welcome {{ Auth::user()->name }} </h2>
+<h2> Welcome: {{ Auth::user()->name }} </h2>
 <div class="container">
     <div class="row">
         <div class="col-lg-4">

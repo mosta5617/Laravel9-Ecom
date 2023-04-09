@@ -124,7 +124,7 @@ require __DIR__.'/auth.php';
 
     Route::controller(AuthenticatedSessionController ::class)->group(function () {
         Route::get('/get-admin-login', 'AdminLogin')->name('getadminlogin');
-        Route::post('/get-admin-login', 'store')->name('postadminlogin');
+        Route::post('/get-admin-login', 'store')->name('postadminlogin'); 
            
     }); 
 

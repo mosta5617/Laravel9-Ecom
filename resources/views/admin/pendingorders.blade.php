@@ -2,7 +2,6 @@
 
 @section('page_title')
     Pending Oders
-    <hr class="featurette-divider">
 @endsection
 
 
